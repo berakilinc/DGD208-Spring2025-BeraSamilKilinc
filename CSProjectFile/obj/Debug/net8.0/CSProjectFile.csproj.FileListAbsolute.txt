@@ -1,0 +1,15 @@
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\bin\Debug\net8.0\CSProjectFile.exe
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\bin\Debug\net8.0\CSProjectFile.deps.json
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\bin\Debug\net8.0\CSProjectFile.runtimeconfig.json
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\bin\Debug\net8.0\CSProjectFile.dll
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\bin\Debug\net8.0\CSProjectFile.pdb
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\obj\Debug\net8.0\CSProjectFile.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\obj\Debug\net8.0\CSProjectFile.AssemblyInfoInputs.cache
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\obj\Debug\net8.0\CSProjectFile.AssemblyInfo.cs
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\obj\Debug\net8.0\CSProjectFile.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\obj\Debug\net8.0\CSProjectFile.dll
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\obj\Debug\net8.0\refint\CSProjectFile.dll
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\obj\Debug\net8.0\CSProjectFile.pdb
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\obj\Debug\net8.0\CSProjectFile.genruntimeconfig.cache
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\obj\Debug\net8.0\ref\CSProjectFile.dll
+C:\Users\USER\Desktop\Mid-Terms\Game Programming 2\Assignment1\CSProjectFile\CSProjectFile\obj\Debug\net8.0\CSProjectFile.sourcelink.json
