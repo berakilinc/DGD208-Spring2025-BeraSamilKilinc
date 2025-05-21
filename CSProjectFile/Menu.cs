@@ -25,7 +25,7 @@ public class Menu<T>
     /// Displays the menu and gets the user's selection.
     /// </summary>
     /// <returns>The selected item, or default(T) if the user chooses to go back</returns>
-    public T ShowAndGetSelection()
+    public T? ShowAndGetSelection()
     {
         if (_items.Count == 0)
         {
@@ -52,7 +52,7 @@ public class Menu<T>
             Console.Write("Enter selection: ");
 
             // Get user input
-            string input = Console.ReadLine();
+            string? input = Console.ReadLine();
             
             // Try to parse the input
             if (int.TryParse(input, out int selection))
