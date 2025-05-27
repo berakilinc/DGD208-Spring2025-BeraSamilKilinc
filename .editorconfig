@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS8618: Null atanamaz alan, oluşturucudan çıkış yaparken null olmayan bir değer içermelidir. 'Gerekli' değiştiricisini ekleyin veya null atanabilir olarak bildirmeyi göz önünde bulundurun.
+dotnet_diagnostic.CS8618.severity = none

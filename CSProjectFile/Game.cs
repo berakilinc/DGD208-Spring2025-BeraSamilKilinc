@@ -12,6 +12,7 @@ public class Game
     private bool _isRunning;
     private readonly Menu<string> _mainMenu;
     private List<Pet> pets = new();
+    private PetAsync _petAsync;
 
     public Game()
     {
@@ -54,7 +55,9 @@ public class Game
                 {
                     Converters = { new JsonStringEnumConverter() }
                 };
-                pets = JsonSerializer.Deserialize<List<Pet>>(json, options) ?? new List<Pet>();
+                var loadedPets = JsonSerializer.Deserialize<List<Pet>>(json, options) ?? new List<Pet>();
+                pets.Clear();
+                pets.AddRange(loadedPets);
                 Console.WriteLine($"{pets.Count} pet(s) loaded from save file.");
             }
             catch (Exception ex)
@@ -68,6 +71,8 @@ public class Game
             pets = new List<Pet>();
             Console.WriteLine("You Need To Adopt A Pet First...");
         }
+
+        _petAsync = new PetAsync(pets, GetSaveFilePath);
     }
 
     private string GetSaveFilePath()
@@ -103,11 +108,11 @@ public class Game
                 break;
 
             case "Adopt a Pet":
-                await AdoptPetAsync();
+                await _petAsync.AdoptPetAsync();
                 break;
 
             case "View Pets":
-                await ViewPetsAsync();
+                await _petAsync.ViewPetsAsync();
                 break;
 
             default:
@@ -118,97 +123,5 @@ public class Game
         }
 
         await Task.Delay(10);
-    }
-
-    private async Task AdoptPetAsync()
-    {
-        Console.Clear();
-        Console.WriteLine("Please choose a new pet type:");
-
-        var petTypes = Enum.GetValues(typeof(PetType)).Cast<PetType>().ToList();
-        for (int i = 0; i < petTypes.Count; i++)
-        {
-            Console.WriteLine($"{i + 1}. {petTypes[i]}");
-        }
-
-        Console.Write("Please Enter Your Choice: ");
-        if (int.TryParse(Console.ReadLine(), out int choice) && choice > 0 && choice <= petTypes.Count)
-        {
-            PetType selectedType = petTypes[choice - 1];
-
-            Console.Write("Give your pet a name: ");
-            string name = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                Console.WriteLine("Pet name cannot be empty!");
-                Console.WriteLine("Press any key to return to main menu");
-                Console.ReadKey();
-                return;
-            }
-
-            Pet newPet = new Pet(name, selectedType);
-            pets.Add(newPet);
-
-            await SavePetsAsync();
-
-            Console.WriteLine($"{name} the {selectedType} has been adopted!");
-        }
-        else
-        {
-            Console.WriteLine("Error, Please Enter Real Choice One Of From The List.");
-        }
-
-        Console.WriteLine("Press any key to return to main menu");
-        Console.ReadKey();
-    }
-
-    private async Task ViewPetsAsync()
-    {
-        Console.Clear();
-        var petMenu = new Menu<Pet>(
-            "Your Pets",
-            pets,
-            pet => $"{pet.Name} ({pet.Type}) - Hunger: {pet.Hunger}, Sleep: {pet.Sleep}, Fun: {pet.Fun}, Alive: {(pet.IsAlive ? "Yes" : "No")}"
-        );
-
-        Pet selectedPet = petMenu.ShowAndGetSelection();
-
-        if (selectedPet == null && pets.Count > 0)
-        {
-            Console.WriteLine("Returning to main menu...");
-        }
-        else if (pets.Count == 0)
-        {
-            Console.WriteLine("No pets adopted yet!");
-        }
-        else
-        {
-            Console.WriteLine($"Selected: {selectedPet.Name} ({selectedPet.Type})");
-        }
-
-        Console.WriteLine("Press any key to return to main menu");
-        Console.ReadKey();
-    }
-
-    private async Task SavePetsAsync()
-    {
-        try
-        {
-            string path = GetSaveFilePath();
-            Directory.CreateDirectory(Path.GetDirectoryName(path));
-            var options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                Converters = { new JsonStringEnumConverter() }
-            };
-            string json = JsonSerializer.Serialize(pets, options);
-            await File.WriteAllTextAsync(path, json);
-            Console.WriteLine("Pets saved successfully!");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Failed to save pets: {ex.Message}");
-        }
     }
 }
