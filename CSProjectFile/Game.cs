@@ -115,6 +115,10 @@ public class Game
                 await _petAsync.ViewPetsAsync();
                 break;
 
+            case "Use Item":
+                await _petAsync.UseItemAsync();
+                break;
+
             default:
                 Console.WriteLine("In Progress...");
                 Console.WriteLine("Something Gone Wrong....");
